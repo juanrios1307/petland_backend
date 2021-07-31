@@ -8,7 +8,7 @@ var Schema=mongoose.Schema;
 const Pet = mongoose.model('pets',{
     imagen : {type: String },
     user: { type: Schema.ObjectId, ref: 'users' },
-    refugio:{type: Schema.ObjectId, ref: 'refugios'},
+    //refugio:{type: Schema.ObjectId, ref: 'refugios'},
     ciudad:{type:String, required:true},
     raza:{type:String, required:true},
     color:{type:String, required:true},

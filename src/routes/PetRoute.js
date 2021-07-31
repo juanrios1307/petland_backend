@@ -10,8 +10,10 @@ route.all('/', function(req, res, next) {
 });
 
 
-route.post('/',controller.create)
-route.get('/',protectedRoutes.verifyToken,controller.getAllPets)
+route.post('/',protectedRoutes.verifyToken,controller.create)
+route.get('/',controller.getAllPets)
+route.get('/search/',controller.getPetsByRace)
+
 route.post('/report',protectedRoutes.verifyToken,controller.reportPetLost)
 route.get('/filter/',protectedRoutes.verifyToken,controller.getPetsByFilter)
 route.get('/detail/',protectedRoutes.verifyToken,controller.getPet)
