@@ -1,8 +1,7 @@
 const PetController={}
 
-const User=require('../models/User')
 const Pet=require('../models/Pet')
-const bcrypt = require("bcryptjs");
+
 
 PetController.create= async (req, res)=>{
 
