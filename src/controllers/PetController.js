@@ -7,9 +7,10 @@ PetController.create= async (req, res)=>{
 
     const user=req.decoded.sub
 
-    var { imagen,ciudad,raza,color,edad,nombre,size,tipo} =req.body //atributos
+    var { refugio,imagen,ciudad,raza,color,edad,nombre,size,tipo} =req.body //atributos
 
     const registro=new Pet({
+        refugio,
         imagen,
         user,
         ciudad,
@@ -24,7 +25,7 @@ PetController.create= async (req, res)=>{
     await  registro.save()
 
     res.json({
-        mensaje:"Mascota guardado, puede iniciar sesión"
+        mensaje:"Mascota guardada"
     })
 
 }
@@ -43,7 +44,7 @@ PetController.getAllPets = (req, res) =>{
 
 }
 
-PetController.getPetsByRace = (req,res)=>{
+PetController.getPetsBySearch = (req, res)=>{
 
     const s=req.headers['condicion']
 

@@ -12,7 +12,7 @@ route.all('/', function(req, res, next) {
 
 route.post('/',protectedRoutes.verifyToken,controller.create)
 route.get('/',controller.getAllPets)
-route.get('/search/',controller.getPetsByRace)
+route.get('/search/',controller.getPetsBySearch)
 
 route.post('/report',protectedRoutes.verifyToken,controller.reportPetLost)
 route.get('/filter/',protectedRoutes.verifyToken,controller.getPetsByFilter)

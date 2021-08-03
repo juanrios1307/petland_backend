@@ -10,12 +10,13 @@ route.all('/', function(req, res, next) {
 });
 
 
-route.post('/',controller.create)
+route.post('/',protectedRoutes.verifyToken,controller.create)
 route.put('/',protectedRoutes.verifyToken,controller.edit)
 route.delete('/',protectedRoutes.verifyToken,controller.delete)
 route.get('/mine/',protectedRoutes.verifyToken,controller.getMineRefuges)
-route.get('/',protectedRoutes.verifyToken,controller.getRefuges)
+route.get('/',protectedRoutes.verifyToken,controller.getAllRefuges)
 route.put('/rating/',protectedRoutes.verifyToken,controller.rating);
 route.get('/rating/',protectedRoutes.verifyToken,controller.getRatings);
 route.get('/filter/',protectedRoutes.verifyToken,controller.getRefugesByFilter);
+route.get('/search/',protectedRoutes.verifyToken,controller.getRefuge)
 module.exports =route
