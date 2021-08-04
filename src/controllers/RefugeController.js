@@ -24,11 +24,36 @@ RefugeController.create= async (req, res)=>{
 
 RefugeController.edit=(req, res)=>{
 
+    const user=req.decoded.sub
+    const refuge = req.headers['refuge']
 
+    Refuge.findByIdAndUpdate(refuge, { $set: req.body }, function (err) {
+        if (err) {
+            //res.send(err);
+            // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+            res.status(203).json({ status: "error", data: "No se ha encontrado la mascota"});
+        } else {
+            // Devolvemos el código HTTP 200.
+            res.status(200).json({ status: "ok", data: "Datos actualizados" });
+        }
+    });
 }
 
 RefugeController.delete=(req, res)=>{
 
+    const user=req.decoded.sub
+    const refuge = req.headers['refuge']
+
+    Refuge.findByIdAndRemove(refuge, function(err, data) {
+        if (err || !data) {
+            //res.send(err);
+            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
+            res.status(203).json({ status: "error", data: "No se ha encontrado la mascota"});
+        } else {
+            res.status(200).json({ status: "ok", data: "Se ha eliminado correctamente la mascota"});
+
+        }
+    });
 }
 
 RefugeController.getMineRefuges = (req, res) =>{
