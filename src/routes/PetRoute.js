@@ -13,10 +13,12 @@ route.all('/', function(req, res, next) {
 route.post('/',protectedRoutes.verifyToken,controller.create)
 route.get('/',controller.getAllPets)
 route.get('/search/',controller.getPetsBySearch)
+route.get('/detail/',controller.getPet)
+
 
 route.post('/report',protectedRoutes.verifyToken,controller.reportPetLost)
 route.get('/filter/',protectedRoutes.verifyToken,controller.getPetsByFilter)
-route.get('/detail/',protectedRoutes.verifyToken,controller.getPet)
+
 route.put('/',protectedRoutes.verifyToken,controller.edit)
 route.delete('/',protectedRoutes.verifyToken,controller.delete)
 route.get('/mine/',protectedRoutes.verifyToken,controller.getMyPets)

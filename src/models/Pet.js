@@ -8,14 +8,13 @@ var Schema=mongoose.Schema;
 const Pet = mongoose.model('pets',{
     imagen : {type: String },
     user: { type: Schema.ObjectId, ref: 'users' },
-    refugio:{type: Schema.ObjectId, ref: 'refugios'},
     ciudad:{type:String, required:true},
-    raza:{type:String, required:true},
-    color:{type:String, required:true},
-    edad:{type:Number, required:true},
-    nombre:{type:String, required:false},
-    size:{type:String, required:true},
-    tipo:{type:String, required:true}
+    raza:{type:String},
+    color:{type:String},
+    edad:{type:Number},
+    nombre:{type:String},
+    size:{type:String},
+    tipo:{type:String}
 })
 
 // Exportamos el modelo para usarlo en otros ficheros

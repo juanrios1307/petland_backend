@@ -8,10 +8,9 @@ PetController.create= async (req, res)=>{
 
     const user=req.decoded.sub
 
-    var { refugio,imagen,ciudad,raza,color,edad,nombre,size,tipo} =req.body //atributos
+    var { imagen,ciudad,raza,color,edad,nombre,size,tipo} =req.body //atributos
 
     const registro=new Pet({
-        refugio,
         imagen,
         user,
         ciudad,
@@ -64,8 +63,52 @@ PetController.getPetsBySearch = (req, res)=>{
     }).populate('user')
 }
 
-PetController.reportPetLost = (req,res)=>{
+PetController.reportPetLost = async(req,res)=>{
 
+    const user=req.decoded.sub
+
+    var { imagen,ciudad,raza,color,edad,nombre,size,tipo} =req.body //atributos
+
+    console.log(req.body)
+
+
+    if(raza==undefined){
+        raza="Raza Desconocida"
+    }
+
+    if(color==undefined){
+        color="Color Desconocido"
+    }
+
+    if(nombre==undefined){
+        nombre="Mascota Perdida"
+    }
+
+    if(size==undefined){
+        size="Tamaño Desnococido"
+    }
+
+    if(tipo==undefined){
+        tipo="Tipo Desconocido"
+    }
+
+    const registro=new Pet({
+        imagen,
+        user,
+        ciudad,
+        raza,
+        color,
+        edad,
+        nombre,
+        size,
+        tipo
+    })
+
+    await  registro.save()
+
+    res.json({
+        mensaje:"Mascota perdida Almacenada"
+    })
 }
 
 PetController.getPetsByFilter = (req,res)=>{
@@ -83,7 +126,7 @@ PetController.getPet = (req, res) =>{
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: pet });
         }
-    })
+    }).populate('user')
 
 }
 
@@ -125,6 +168,17 @@ PetController.delete=(req, res)=>{
 
 PetController.getMyPets = (req, res) =>{
 
+    const user=req.decoded.sub
+
+    Pet.find({'user':user},function(err,pets){
+        if (err) {
+            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
+            res.status(203).json({ status: "error", data: "No se ha encontrado"});
+        } else {
+            // También podemos devolver así la información:
+            res.status(200).json({ status: "ok", data: pets });
+        }
+    })
 
 }
 
