@@ -8,32 +8,33 @@ const User=require('../models/User')
 
 
 UserController.create= async (req, res)=>{
+
     var {nombre,correo,pwd,telefono,ciudad} =req.body //atributos
 
     if (await User.findOne({ correo: correo })) {
         res.json({
             mensaje:"El correo"+correo+" esta en uso"
         })
+    }else {
+
+        if (pwd) {
+            pwd = bcrypt.hashSync(pwd, 10);
+        }
+
+        const registro = new User({
+            correo,
+            pwd,
+            nombre,
+            telefono,
+            ciudad,
+        })
+
+        await registro.save()
+
+        res.json({
+            mensaje: "Usuario guardado, puede iniciar sesión"
+        })
     }
-
-    if (pwd) {
-        pwd= bcrypt.hashSync(pwd, 10);
-    }
-
-    const registro=new User({
-        correo,
-        pwd,
-        nombre,
-        telefono,
-        ciudad,
-    })
-
-    await  registro.save()
-
-    res.json({
-        mensaje:"Usuario guardado, puede iniciar sesión"
-    })
-
 
 }
 
