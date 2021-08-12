@@ -57,7 +57,6 @@ PetController.getPetsBySearch = (req, res)=>{
             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
             res.status(203).json({ status: "error", data: "No se ha encontrado"});
         } else {
-            console.log(pets)
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: pets });
         }
