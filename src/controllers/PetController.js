@@ -49,14 +49,15 @@ PetController.getPetsBySearch = (req, res)=>{
     const s=req.headers['condicion']
 
     Pet.find({$or:[
-            {"nombre":{$regex : "^"+s+".*" }},
-            {"raza":{$regex : "^"+s+".*" }},
-            {"tipo":{$regex : "^"+s+".*" }}
+            {"nombre":{$regex :  new RegExp("^"+s+".*",'i' )}},
+            {"raza":{$regex :  new RegExp("^"+s+".*",'i') }},
+            {"tipo":{$regex :  new RegExp("^"+s+".*",'i') }}
             ]},function(err,pets){
         if (err) {
             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
             res.status(203).json({ status: "error", data: "No se ha encontrado"});
         } else {
+            console.log(pets)
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: pets });
         }
