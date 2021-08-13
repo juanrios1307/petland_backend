@@ -11,30 +11,27 @@ UserController.create= async (req, res)=>{
 
     var {nombre,correo,pwd,telefono,ciudad} =req.body //atributos
 
-    if (await User.findOne({ correo: correo })) {
-        res.json({
-            mensaje:"El correo"+correo+" esta en uso"
-        })
-    }else {
 
-        if (pwd) {
-            pwd = bcrypt.hashSync(pwd, 10);
+    User.findOne({ correo: correo }, async function (err, user) {
+        if (user==undefined || user.length==0) {
+
+            if (pwd) {
+                pwd = bcrypt.hashSync(pwd, 10);
+            }
+
+            const registro = new User({correo, pwd, nombre, telefono, ciudad,})
+
+            await registro.save()
+
+            res.status(200).json({
+                mensaje: "Usuario guardado, puede iniciar sesión"
+            })
+
+        } else {
+                // También podemos devolver así la información:
+            res.status(203).json({mensaje:"El correo"+correo+" esta en uso"})
         }
-
-        const registro = new User({
-            correo,
-            pwd,
-            nombre,
-            telefono,
-            ciudad,
-        })
-
-        await registro.save()
-
-        res.json({
-            mensaje: "Usuario guardado, puede iniciar sesión"
-        })
-    }
+    })
 
 }
 
