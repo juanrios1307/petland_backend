@@ -16,9 +16,7 @@ app.use(cors({origin:true}))
 
 
 //Declaracion de rutas para manejo de api
-app.use('/api/chat',require('./routes/ChatRoute'))
 app.use('/api/pet',require('./routes/PetRoute'))
-app.use('/api/refuge',require('./routes/RefugeRoute'))
 app.use('/api/user',require('./routes/UserRoute'))
 
 //start server

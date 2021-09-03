@@ -5,12 +5,12 @@ const verifiyEmail = {};
 
 
 verifiyEmail.getEmail= ((req, res, next) => {
-    const token = req.headers['access-token'];
+    const {correo} = req.body;
     User.findOne({ correo: correo }, async function (err, user) {
         if (user==undefined || user.length==0) {
             next();
         }else{
-            res.status(203).json({mensaje:"El correo"+correo+" esta en uso"})
+            res.status(203).json({mensaje:"El correo: "+correo+" está en uso"})
         }
     })
 
