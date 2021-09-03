@@ -1,7 +1,7 @@
 const  {Router} =require('express')
 const route=Router()
 const  controller=require('../controllers/ChatController')
-const protectedRoutes=require('../helpers/protectedRoutes')
+const protectedRoutes=require('../BO/ProtectedRoutes')
 
 route.all('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

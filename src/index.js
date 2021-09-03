@@ -5,7 +5,7 @@ const cors= require('cors')
 const bodyparser=require('body-parser')
 
 
-require('./helpers/database')
+require('./middlewares/database')
 
 app.set('Port',5000)
 
