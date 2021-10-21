@@ -9,15 +9,15 @@ rutasProtegidas.verifyToken= ((req, res, next) => {
     if (token) {
         jwt.verify(token, config.secret, (err, decoded) => {
             if (err) {
-                return res.json({ mensaje: 'Token inválida' });
+                return res.status(203).json({ mensaje: 'Token inválida' });
             } else {
                 req.decoded = jwt.decode(token, config.secret);
                 next();
             }
         });
     } else {
-        res.send({
-            mensaje: 'Token no proveída.'
+        res.status(203).send({
+            mensaje: 'Token no proveída'
         });
     }
 });
