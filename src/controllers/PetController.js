@@ -1,8 +1,6 @@
 const PetController={}
 
 const Pet=require('../models/Pet')
-const User = require("../models/User");
-
 
 PetController.create= async (req, res)=>{
 
@@ -10,23 +8,31 @@ PetController.create= async (req, res)=>{
 
     var { imagen,ciudad,raza,color,edad,nombre,size,tipo} =req.body //atributos
 
-    const registro=new Pet({
-        imagen,
-        user,
-        ciudad,
-        raza,
-        color,
-        edad,
-        nombre,
-        size,
-        tipo
-    })
+    if(imagen != undefined && ciudad != undefined && raza != undefined && color != undefined &&
+    edad != undefined && nombre != undefined && size != undefined && tipo != undefined) {
 
-    await  registro.save()
+        const registro = new Pet({
+            imagen,
+            user,
+            ciudad,
+            raza,
+            color,
+            edad,
+            nombre,
+            size,
+            tipo
+        })
 
-    res.json({
-        mensaje:"Mascota guardada"
-    })
+        await registro.save()
+
+        res.status(200).json({
+            mensaje: "Mascota guardada"
+        })
+    }else{
+        res.status(203).json({
+            mensaje: "Por favor llene todos los campos"
+        })
+    }
 
 }
 
@@ -34,8 +40,8 @@ PetController.getAllPets = (req, res) =>{
 
     Pet.find({},function(err,pets){
         if (err) {
-            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-            res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+req.params.id});
+            // Devolvemos el código HTTP 203, de mascota no encontrada.
+            res.status(203).json({ status: "error", data: "No se han encontrado mascotas"});
         } else {
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: pets });
@@ -53,9 +59,9 @@ PetController.getPetsBySearch = (req, res)=>{
             {"raza":{$regex :  new RegExp("^"+s+".*",'i') }},
             {"tipo":{$regex :  new RegExp("^"+s+".*",'i') }}
             ]},function(err,pets){
-        if (err) {
-            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-            res.status(203).json({ status: "error", data: "No se ha encontrado"});
+        if (err || pets.length ==0) {
+            // Devolvemos el código HTTP 203
+            res.status(203).json({ status: "error", data: "No se han encontrado mascotas con el criterio de busqueda"});
         } else {
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: pets });
@@ -121,7 +127,7 @@ PetController.getPet = (req, res) =>{
     Pet.findById(id,function(err,pet){
         if (err) {
             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-            res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+req.params.id});
+            res.status(203).json({ status: "error", data: "No se ha encontrado la mascota"});
         } else {
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: pet });

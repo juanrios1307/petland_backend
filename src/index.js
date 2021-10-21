@@ -21,6 +21,7 @@ app.use('/api/user',require('./routes/UserRoute'))
 
 //start server
 app.listen(process.env.PORT || 5000,()=>{
-    console.log('Listen in the port ',process.env.PORT)
+    console.log('Listen in the port ',process.env.PORT || 5000)
 })
 
+module.exports = app
