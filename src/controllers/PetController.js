@@ -29,7 +29,7 @@ PetController.create= async (req, res)=>{
             mensaje: "Mascota guardada"
         })
     }else{
-        res.status(203).json({
+        res.status(400).json({
             mensaje: "Por favor llene todos los campos"
         })
     }
@@ -61,7 +61,7 @@ PetController.getPetsBySearch = (req, res)=>{
             ]},function(err,pets){
         if (err || pets.length ==0) {
             // Devolvemos el código HTTP 203
-            res.status(203).json({ status: "error", data: "No se han encontrado mascotas con el criterio de busqueda"});
+            res.status(400).json({ status: "error", data: "No se han encontrado mascotas con el criterio de busqueda"});
         } else {
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: pets });
