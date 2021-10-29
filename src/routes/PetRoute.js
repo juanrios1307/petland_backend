@@ -15,8 +15,6 @@ route.get('/',controller.getAllPets)
 route.get('/search/',controller.getPetsBySearch)
 route.get('/detail/',controller.getPet)
 
-
-route.post('/report',protectedRoutes.verifyToken,controller.reportPetLost)
 route.get('/filter/',protectedRoutes.verifyToken,controller.getPetsByFilter)
 
 route.put('/',protectedRoutes.verifyToken,controller.edit)

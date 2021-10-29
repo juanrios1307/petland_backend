@@ -14,7 +14,8 @@ const Pet = mongoose.model('pets',{
     edad:{type:Number},
     nombre:{type:String},
     size:{type:String},
-    tipo:{type:String}
+    tipo:{type:String},
+    adopcion:{type:Boolean, default:false}
 })
 
 // Exportamos el modelo para usarlo en otros ficheros
