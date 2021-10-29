@@ -48,16 +48,18 @@ Adopcion.reportAdoptablePet = async(req,res)=>{
     await  registro.save()
 
     res.json({
-        mensaje:"Mascota perdida Almacenada"
+        mensaje:"Mascota Guardada"
     })
 }
 
 Adopcion.adoptarPet = async(req,res)=>{
 
     const user=req.decoded.sub
-    const Adopciones = req.headers['pet']
+    const pet = req.headers['pet']
 
-    User.findByIdAndUpdate(user, {$push:Adopciones}, function (err) {
+    console.log(pet)
+
+    User.findByIdAndUpdate(user, {$push:{Adopciones:pet}}, function (err) {
         if (err) {
             //res.send(err);
             // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
