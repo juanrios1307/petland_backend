@@ -89,5 +89,20 @@ Adopcion.getAdoptPets = async(req,res)=>{
 
 }
 
+Adopcion.getAvailablePets = async(req,res)=>{
+
+    Pet.find({adopcion:true}, function (err,pets) {
+        if (err) {
+            //res.send(err);
+            // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+            res.status(203).json({ status: "error", data: "error"});
+        } else {
+            // Devolvemos el código HTTP 200.
+            res.status(200).json({ status: "ok", data: pets });
+        }
+    }).populate('user');
+
+}
+
 //Se exporta controlador
 module.exports=Adopcion
