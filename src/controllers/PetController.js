@@ -69,53 +69,6 @@ PetController.getPetsBySearch = (req, res)=>{
     }).populate('user')
 }
 
-PetController.reportPetLost = async(req,res)=>{
-
-    const user=req.decoded.sub
-
-    var { imagen,ciudad,raza,color,edad,nombre,size,tipo} =req.body //atributos
-
-    console.log(req.body)
-
-
-    if(raza==undefined){
-        raza="Raza Desconocida"
-    }
-
-    if(color==undefined){
-        color="Color Desconocido"
-    }
-
-    if(nombre==undefined){
-        nombre="Mascota Perdida"
-    }
-
-    if(size==undefined){
-        size="Tamaño Desnococido"
-    }
-
-    if(tipo==undefined){
-        tipo="Tipo Desconocido"
-    }
-
-    const registro=new Pet({
-        imagen,
-        user,
-        ciudad,
-        raza,
-        color,
-        edad,
-        nombre,
-        size,
-        tipo
-    })
-
-    await  registro.save()
-
-    res.json({
-        mensaje:"Mascota perdida Almacenada"
-    })
-}
 
 PetController.getPetsByFilter = (req,res)=>{
 
@@ -188,9 +141,6 @@ PetController.getMyPets = (req, res) =>{
 
 }
 
-
-
-
-
 //Se exporta controlador
 module.exports=PetController
+
