@@ -141,3 +141,6 @@ PetController.getMyPets = (req, res) =>{
 
 }
 
+//Se exporta controlador
+module.exports=PetController
+
