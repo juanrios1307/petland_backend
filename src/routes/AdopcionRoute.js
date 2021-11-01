@@ -13,5 +13,6 @@ route.all('/', function(req, res, next) {
 route.put('/',protectedRoutes.verifyToken,controller.adoptarPet)
 route.get('/',protectedRoutes.verifyToken,controller.getAdoptPets)
 route.post('/',protectedRoutes.verifyToken,controller.reportAdoptablePet)
+route.get('/available',controller.getAvailablePets)
 
 module.exports =route
