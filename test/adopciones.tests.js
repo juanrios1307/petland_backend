@@ -96,7 +96,7 @@ describe("GET api/adopt/",()=>{
     it("JSON 200 con mascotas adoptadas",(done)=>{
         const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTA1OWU0ZDVjNTgwMDhmZjNjMDJiZDEiLCJpYXQiOjE2MzQ4NDQ0MzksImV4cCI6MTY0MzQ4NDQzOX0.lUKCfTBb5CZAW3UWZ4LpWFTZbWLF3b-xCan7CQRwezI"
         request(app)
-            .get("/api/pet/adopt")
+            .get("/api/adopt")
             .set("Accept", "application/json")
             .set("access-token",token)
             .expect("Content-Type", /json/)
@@ -107,7 +107,7 @@ describe("GET api/adopt/",()=>{
     it("JSON 200 sin mascotas adoptadas existentes",(done)=>{
         const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTA1OWU0ZDVjNTgwMDhmZjNjMDJiZDEiLCJpYXQiOjE2MzQ4NDQ0MzksImV4cCI6MTY0MzQ4NDQzOX0.lUKCfTBb5CZAW3UWZ4LpWFTZbWLF3b-xCan7CQRwezI"
         request(app)
-            .get("/api/pet/adopt")
+            .get("/api/adopt")
             .set("Accept", "application/json")
             .set("access-token",token)
             .expect("Content-Type", /json/)
