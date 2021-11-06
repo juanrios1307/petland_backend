@@ -79,58 +79,6 @@ describe("POST api/pet", () => {
                 done();
             });
     }).timeout(5000);
-
-    it("respuesta con 400 edad menor a 0 y mayor a 150", (done) => {
-        const data = {
-            imagen:"https://res.cloudinary.com/drn7vichy/image/upload/v1628640716/dog_d93jye.jpg",
-            ciudad:"Medellín",
-            raza:"Pincher",
-            color:"Marrón",
-            edad:"-10",
-            nombre:"Pancho",
-            size:"Mediano",
-            tipo:"Perro"
-        };
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTA1OWU0ZDVjNTgwMDhmZjNjMDJiZDEiLCJpYXQiOjE2MzQ4NDQ0MzksImV4cCI6MTY0MzQ4NDQzOX0.lUKCfTBb5CZAW3UWZ4LpWFTZbWLF3b-xCan7CQRwezI"
-        request(app)
-            .post("/api/pet")
-            .send(data)
-            .set("Accept", "application/json")
-            .set("access-token",token)
-            .expect("Content-Type", /json/)
-            .expect(400)
-            .expect({mensaje: "Por favor ingrese una edad valida"})
-            .end((err) => {
-                if (err) return done(err);
-                done();
-            });
-    }).timeout(5000);
-
-    it("respuesta con 400 color con numeros", (done) => {
-        const data = {
-            imagen:"https://res.cloudinary.com/drn7vichy/image/upload/v1628640716/dog_d93jye.jpg",
-            ciudad:"Medellín",
-            raza:"Pincher",
-            color:"Marrón 5",
-            edad:"10",
-            nombre:"Pancho",
-            size:"Mediano",
-            tipo:"Perro"
-        };
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTA1OWU0ZDVjNTgwMDhmZjNjMDJiZDEiLCJpYXQiOjE2MzQ4NDQ0MzksImV4cCI6MTY0MzQ4NDQzOX0.lUKCfTBb5CZAW3UWZ4LpWFTZbWLF3b-xCan7CQRwezI"
-        request(app)
-            .post("/api/pet")
-            .send(data)
-            .set("Accept", "application/json")
-            .set("access-token",token)
-            .expect("Content-Type", /json/)
-            .expect(400)
-            .expect({mensaje: "Por favor ingrese un color valido"})
-            .end((err) => {
-                if (err) return done(err);
-                done();
-            });
-    }).timeout(5000);
 });
 
 //test pet search
@@ -171,22 +119,6 @@ describe("GET api/pet/search", () => {
                 done();
             });
     });
-
-    it("Respuesta 400 Condicion de menos de 3 caracteres", (done) => {
-        var s="P"
-        request(app)
-            .get("/api/pet/search")
-            .set("Accept", "application/json")
-            .set("condicion", s)
-            .expect("Content-Type", /json/)
-            .expect(400)
-            .expect({"status":"error","data":"No se puede efectuar la busqueda"})
-            .end((err) => {
-                if (err) return done(err);
-                done();
-            });
-    });
-
 });
 
 
