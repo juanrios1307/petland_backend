@@ -3,7 +3,7 @@ const Productos={}
 
 Productos.getProducts = async(req,res)=>{
 
-    const data =
+    /*const data =
         [
            {
                Cantidad: 70,
@@ -29,8 +29,19 @@ Productos.getProducts = async(req,res)=>{
                 Precio:456,
                 Producto:"Arena"
             },
-        ]
+        ]*/
 
+    var axios = require('axios');
+
+
+    var config = {
+        method: 'get',
+        url: 'https://inventorywebservices.herokuapp.com/webService/inventarioDisp.json?user=a',
+    };
+
+    const response = await axios(config)
+
+    const data = response.data
 
 
     res.status(200).json({status: "ok", data:data})
