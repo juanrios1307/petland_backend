@@ -36,7 +36,7 @@ Productos.getProducts = async(req,res)=>{
 
     var config = {
         method: 'get',
-        url: 'https://inventorywebservices.herokuapp.com/webService/inventarioDisp.json?user=a',
+        url: 'https://inventorywebservices.herokuapp.com/webService/inventarioDisp.json?user=d7b4d4dccbc136dfcb7f6ae08711be6eb3097cbd7deb63a74332d632695be4cc',
     };
 
     const response = await axios(config)
