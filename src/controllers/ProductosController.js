@@ -41,7 +41,7 @@ Productos.getProducts = async(req,res)=>{
 
     const response = await axios(config)
 
-    const data = response.data
+    const data = response.data.Products
 
 
     res.status(200).json({status: "ok", data:data})
