@@ -1,0 +1,116 @@
+{
+  "id": "d379270b-9667-4188-b80c-40b3e172e903",
+  "version": "2.0",
+  "name": "Integration Tests",
+  "url": "https://petlandf.herokuapp.com",
+  "tests": [{
+    "id": "717f8d97-2eff-492d-b81f-5e42d0240a8c",
+    "name": "Untitled",
+    "commands": []
+  }, {
+    "id": "b59bf531-70d2-46c8-b0a5-051efaf18601",
+    "name": "Products Test",
+    "commands": [{
+      "id": "0bbb42cb-4212-4763-88fd-738598e55814",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d85081a8-26f9-4bf4-867d-ba68de568903",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1049x562",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4455c054-5b15-44f0-91a6-0affb90c15b2",
+      "comment": "",
+      "command": "click",
+      "target": "id=normal_login_pet",
+      "targets": [
+        ["id=normal_login_pet", "id"],
+        ["css=#normal_login_pet", "css:finder"],
+        ["xpath=//input[@id='normal_login_pet']", "xpath:attributes"],
+        ["xpath=//form[@id='normal_login']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c4f4f56-0a79-4c56-9f30-01775bae03a2",
+      "comment": "",
+      "command": "type",
+      "target": "id=normal_login_pet",
+      "targets": [
+        ["id=normal_login_pet", "id"],
+        ["css=#normal_login_pet", "css:finder"],
+        ["xpath=//input[@id='normal_login_pet']", "xpath:attributes"],
+        ["xpath=//form[@id='normal_login']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "perro"
+    }, {
+      "id": "1b5b773a-ca7a-46e2-b04c-21bb5f4803c5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='normal_login']/div[2]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Buscar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "86f8ff95-5b0e-4028-a986-ea5143e881d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(2) h2",
+      "targets": [
+        ["css=.ant-row:nth-child(2) h2", "css:finder"],
+        ["xpath=//div[@id='hero']/div[2]/div/div/div/div/div/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'medellín')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "611a198f-95a0-4bae-b281-20c3de4ac75b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(2) .ant-card-actions svg",
+      "targets": [
+        ["css=.ant-row:nth-child(2) .ant-card-actions svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "4fff5307-1a37-41bd-a43f-5b33fad99dda",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,409.6000061035156)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8458d6f1-6809-496c-ab4f-db3ba71d9cab",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(2) > .ant-col .ant-col",
+      "targets": [
+        ["css=.ant-row:nth-child(2) > .ant-col .ant-col", "css:finder"],
+        ["xpath=//div[@id='pricing']/div/div/div/div/div[4]/div[2]/div/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "524c2a1e-1421-44e3-b247-8f795fbda39e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["717f8d97-2eff-492d-b81f-5e42d0240a8c"]
+  }],
+  "urls": ["https://petlandf.herokuapp.com/"],
+  "plugins": []
+}
