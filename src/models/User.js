@@ -10,7 +10,8 @@ const User = mongoose.model('users',{
     pwd:  {type:String, required:true},
     nombre: {type:String, required:true},
     telefono:  {type:String, required:true},
-    ciudad: {type:String, required:true}
+    ciudad: {type:String, required:true},
+    Adopciones: [{ type: Schema.ObjectId, ref: 'pets' }]
 })
 
 // Exportamos el modelo para usarlo en otros ficheros

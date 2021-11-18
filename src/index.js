@@ -15,7 +15,9 @@ app.use(cors({origin:true}))
 
 
 //Declaracion de rutas para manejo de api
+app.use('/api/adopt',require('./routes/AdopcionRoute'))
 app.use('/api/pet',require('./routes/PetRoute'))
+app.use('/api/products',require('./routes/ProductosRoute'))
 app.use('/api/user',require('./routes/UserRoute'))
 
 //start server
