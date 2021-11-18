@@ -10,8 +10,7 @@ require('./middlewares/database')
 app.set('Port',5000)
 
 app.use(morgan('dev'))
-app.use(bodyparser.urlencoded({extend:true}))
-app.use(bodyparser.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(cors({origin:true}))
 
 
